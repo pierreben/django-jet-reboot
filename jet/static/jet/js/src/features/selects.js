@@ -151,6 +151,10 @@ Select2.prototype = {
             width: 'auto'
         };
 
+        if ($select.data('placeholder')) {
+            settings.placeholder = $select.data('placeholder')
+        }
+
         if ($select.hasClass('ajax')) {
             var contentTypeId = $select.data('content-type-id');
             var appLabel = $select.data('app-label');

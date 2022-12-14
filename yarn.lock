@@ -1516,9 +1516,9 @@ jquery-mousewheel@~3.1.13:
   version "3.1.13"
   resolved "https://registry.yarnpkg.com/jquery-mousewheel/-/jquery-mousewheel-3.1.13.tgz#06f0335f16e353a695e7206bf50503cb523a6ee5"
 
-"jquery-ui@git://github.com/jquery/jquery-ui#1.11.4":
+"jquery-ui@https://github.com/jquery/jquery-ui#1.11.4":
   version "1.11.4"
-  resolved "git://github.com/jquery/jquery-ui#d6713024e16de90ea71dc0544ba34e1df01b4d8a"
+  resolved "https://github.com/jquery/jquery-ui#d6713024e16de90ea71dc0544ba34e1df01b4d8a"
 
 jquery.cookie@1.4.1:
   version "1.4.1"
@@ -2219,10 +2219,9 @@ pbkdf2@^3.0.3:
   dependencies:
     create-hmac "^1.1.2"
 
-"perfect-scrollbar@git://github.com/noraesae/perfect-scrollbar#0.6.14":
+"perfect-scrollbar@https://github.com/noraesae/perfect-scrollbar#0.6.14":
   version "0.0.0"
-  uid "721398fda70afbdf5d5b1b21e2f70d9df6c68383"
-  resolved "git://github.com/noraesae/perfect-scrollbar#721398fda70afbdf5d5b1b21e2f70d9df6c68383"
+  resolved "https://github.com/noraesae/perfect-scrollbar#721398fda70afbdf5d5b1b21e2f70d9df6c68383"
 
 performance-now@^0.2.0:
   version "0.2.0"
@@ -2811,9 +2810,9 @@ time-stamp@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/time-stamp/-/time-stamp-1.0.1.tgz#9f4bd23559c9365966f3302dbba2b07c6b99b151"
 
-"timepicker@git://github.com/geex-arts/timepicker":
+"timepicker@https://github.com/geex-arts/timepicker":
   version "0.3.3"
-  resolved "git://github.com/geex-arts/timepicker#af182e40781fbcc4404547c7949e1610e4e9c184"
+  resolved "https://github.com/geex-arts/timepicker#af182e40781fbcc4404547c7949e1610e4e9c184"
   dependencies:
     jquery ">=1.5.1"
 

@@ -1,0 +1,14 @@
+{% load i18n %}
+<ul multiple data-parameter-name="{{ spec.parameter_name }}" data-placeholder="{% blocktrans with filter_title=title %} By {{ filter_title }} {% endblocktrans %}">
+    {% for group_name, group_choices in choices %}
+        {% if group_name %}
+            <li><a href="#" title="{{ group_name }}">{{ group_name }}</a><ul>
+        {% endif %}
+        {% for choice in group_choices %}
+            <li{% if choice.selected %} class="selected" {% endif %} data-value='{{ choice.value }}'><a href="#" title="{{ choice.display }}">{{ choice.display }}</a></li>
+        {% endfor %}
+        {% if group_name %}
+            </ul></li>
+        {% endif %}
+    {% endfor %}
+</ul>

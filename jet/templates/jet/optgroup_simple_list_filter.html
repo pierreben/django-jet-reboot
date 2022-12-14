@@ -1,0 +1,17 @@
+{% load i18n %}
+<h3>{% blocktrans with filter_title=title %} By {{ filter_title }} {% endblocktrans %}</h3>
+<ul>
+    {% for group_name, group_choices in choices %}
+        {% if group_name %}
+            <li><a href="#" title="{{ group_name }}">{{ group_name }}</a><ul>
+        {% endif %}
+        {% for choice in group_choices %}
+            <li{% if choice.selected %} class="selected"{% endif %}>
+                <a href="{{ choice.query_string|iriencode }}" title="{{ choice.display }}">{{ choice.display }}</a>
+            </li>
+        {% endfor %}
+        {% if group_name %}
+            </ul></li>
+        {% endif %}
+    {% endfor %}
+</ul>

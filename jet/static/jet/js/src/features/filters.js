@@ -19,6 +19,7 @@ Filters.prototype = {
                 var $selectedOption = $select.find('option:selected');
 
                 if (multiple) {
+                    var $parameterName = $select.data("parameterName");
                     if ($select.data('previous-options').length < $selectedOption.length) {
                         $selectedOption = $selectedOption.filter(function (index, option) {
                             return $select.data('previous-options').filter(function(index, initialOption) {
@@ -34,6 +35,15 @@ Filters.prototype = {
                     }
 
                     $select.data('previous-options', $select.find('option:selected'));
+
+                    var selectedValues = [];
+                    $select.find('option:selected').each(function () {
+                        selectedValues.push($(this).data('value'));
+                    })
+
+                    var href = new URL(window.location.href);
+                    href.searchParams.set($parameterName, selectedValues);
+                    $selectedOption.data('url', href.toString());
                 }
 
                 var url = $selectedOption.data('url');

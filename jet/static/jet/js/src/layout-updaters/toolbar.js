@@ -30,7 +30,8 @@ ToolbarUpdater.prototype = {
                 filterName = $element.text();
             } else if ($element.prop('tagName') == 'UL') {
                 var $select = $('<select>');
-                var $items = $element.find('li');
+                var $allItems = $element.find('li');
+                var $items = $element.children('li');
 
                 $.each($element.prop('attributes'), function() {
                     $select.attr(this.name, this.value);
@@ -38,21 +39,26 @@ ToolbarUpdater.prototype = {
 
                 $select.addClass('changelist-filter-select');
 
-                if ($items.filter('.selected').length > 1) {
+                if ($allItems.filter('.selected').length > 1) {
                     $select.attr('multiple', true);
                 }
 
-                $items.each(function(i) {
-                    var $item = $(this);
-                    var $link = $item.find('a');
+                var multiple = $select.attr('multiple');
+
+                function createOption ($item, createSeparator) {
+                    var $link = $item.children('a');
                     var $option = $('<option>')
                         .text($link.text())
                         .attr('data-url', $link.attr('href'))
                         .attr('selected', $item.hasClass('selected'));
 
-                    if (i == 0 ) {
+                    $.each($item.prop('attributes'), function () {
+                        $option.attr(this.name, this.value);
+                    });
+
+                    if (createSeparator) {
                         if (filterName != null) {
-                            $option.text(filterName)
+                            $option.text(filterName);
                         }
 
                         var $separator = $('<option>')
@@ -61,8 +67,25 @@ ToolbarUpdater.prototype = {
 
                         $option = $option.add($separator);
                     }
+                    return $option
+                }
 
-                    $select.append($option);
+                $items.each(function(i) {
+                    var $item = $(this);
+                    var $link = $item.children('a');
+                    var $subList = $item.children('ul');
+
+                    if ($subList.length > 0) {
+                        var $subItems = $subList.children('li');
+                        var $optGroup = $('<optgroup>').attr('label', $link.html());
+                        $subItems.each(function (si) {
+                            var $subItem = $(this);
+                            $optGroup.append(createOption($subItem, false));
+                        })
+                        $select.append($optGroup);
+                    } else {
+                        $select.append(createOption($item, !multiple && i == 0));
+                    }
                 });
 
                 var $wrapper = $('<span>')
